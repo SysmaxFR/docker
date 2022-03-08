@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 
 services:
   thehive:
@@ -7,10 +7,10 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - './thehive/application.conf:/etc/thehive/application.conf'
-      - './thehive/db:/opt/thp/thehive/db'
-      - './thehive/data:/opt/thp/thehive/data'
-      - './thehive/index:/opt/thp/thehive/index'
+      - ./thehive/application.conf:/etc/thehive/application.conf
+      - ./thehive/db:/opt/thp/thehive/db
+      - ./thehive/data:/opt/thp/thehive/data
+      - ./thehive/index:/opt/thp/thehive/index
     networks:
       - network
   
@@ -20,10 +20,10 @@ services:
     ports:
       - 9001:9001
     volumes:
-      - './cortex/application.conf:/etc/cortex/application.conf'
-      - './cortext/jobs:/opt/cortex/jobs'
-      - './cortex/analyzers:/opt/cortex/analyzers'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - ./cortex/application.conf:/etc/cortex/application.conf
+      - ./cortext/jobs:/opt/cortex/jobs
+      - ./cortex/analyzers:/opt/cortex/analyzers
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - network
 
@@ -37,15 +37,15 @@ services:
 #      - DB_TYPE=postgresdb
 #      - DB_POSTGRESDB_HOST=postgres
 #      - DB_POSTGRESDB_PORT=5432
-#      - 'DB_POSTGRESDB_DATABASE=${POSTGRES_DB}'
-#      - 'DB_POSTGRESDB_USER=${POSTGRES_USER}'
-#      - 'DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}'
-#      - 'N8N_BASIC_AUTH_ACTIVE=${N8N_BASIC_AUTH_ACTIVE}'
-#      - 'N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}'
-#      - 'N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}'
+#      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB}
+#      - DB_POSTGRESDB_USER=${POSTGRES_USER}
+#      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+#      - N8N_BASIC_AUTH_ACTIVE=${N8N_BASIC_AUTH_ACTIVE}
+#      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+#      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
 #    volumes:
-#      - './vol/n8n/.n8n:/root/.n8n'
-#      - './vol/n8n/workflows:/opt/workflows'
+#      - ./n8n/.n8n:/root/.n8n
+#      - ./n8n/workflows:/opt/workflows
 #    networks:
 #      -  network
     
@@ -53,11 +53,11 @@ services:
 #    image: postgres:latest
 #    container_name: postgres
 #    environment:
-#      - 'POSTGRES_USER=${POSTGRES_USER}'
-#      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
-#      - 'POSTGRES_DB=${POSTGRES_DB}'
+#      - POSTGRES_USER=${POSTGRES_USER}
+#      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+#      - POSTGRES_DB=${POSTGRES_DB}
 #    volumes:
-#      - './vol/postgres/data:/var/lib/postgresql/data'
+#      - ./postgres/data:/var/lib/postgresql/data
 #    networks:
 #      - network
     
